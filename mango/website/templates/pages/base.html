@@ -1,0 +1,17 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Bootswatch.css'%}">
+</head>
+<body>
+
+    {% include 'pages/navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+    
+
+</body>
