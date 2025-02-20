@@ -23,5 +23,11 @@ body{
     margin: auto;
     padding: 20px;
     margin-top: 20px;
+    border-radius: 25px;
 }
 
+
+/* django displayed errors such as login or register validation error: */
+.errorlog{
+    color: red;
+}

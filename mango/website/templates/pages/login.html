@@ -6,10 +6,11 @@
 
 
 <div class="input-form-css">
-    <form>
-        {% csrf_token %}
-        {{form|crispy}}
-        <button type="submit"> 123 </button>
-    </form>
+<form action="submit">
+
+    {% csrf_token %}
+    {{login_form|crispy}}
+
+</form>
 </div>
 {% endblock %}

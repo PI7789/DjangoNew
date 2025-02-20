@@ -9,7 +9,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = HotelUser
 
-        fields = ['first_name', 'last_name', 'username', 'email', 'phonenum', 'password']
+        fields = ['first_name', 'last_name', 'username', 'email', 'phonenum', 'password1', 'password2']
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput())
