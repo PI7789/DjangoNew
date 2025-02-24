@@ -14,3 +14,13 @@ class RegisterForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput())
     password = forms.CharField(widget=PasswordInput())
+
+class BookingForm(forms.ModelForm):
+
+    class Meta: 
+        model = Booking
+
+        fields = ['booking_startdate','booking_enddate','booking_people']
+
+        widgets = {'booking_startdate': forms.DateInput(attrs={'type': 'date'}),
+                  'booking_enddate': forms.DateInput(attrs={'type': 'date'}) }

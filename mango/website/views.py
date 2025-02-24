@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from .models import HotelUser
 
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, BookingForm
 
 from django.contrib.auth import authenticate
 
@@ -38,3 +38,18 @@ def login(request):
                 return redirect('')
     context = { 'login_form' : form }
     return render(request, 'pages/login.html', context=context)
+
+def booking(request):
+    form = BookingForm()
+    if request.method=="POST":
+        newrequest = request.POST.copy()
+        newrequest.update({'booking_user_id':request.user})
+        form = BookingForm(newrequest)
+        if form.is_valid():  
+            form.save()
+            return redirect('')
+        else:
+            print("error")
+    context = {'BForm': form}
+    
+    return render(request, 'pages/booking.html', context=context)

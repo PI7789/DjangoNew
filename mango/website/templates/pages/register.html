@@ -6,7 +6,7 @@
 
 
 <div class="input-form-css">
-    <form>
+    <form method="POST">
         {% csrf_token %}
         {{form|crispy}}
         <button type="submit"> 123 </button>

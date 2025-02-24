@@ -4,14 +4,11 @@
 
 {% block content %}
 
-
-<div class="input-form-css">
 <form method="POST">
 
     {% csrf_token %}
-    {{login_form|crispy}}
+    {{BForm|crispy}}
     <button type="submit"> submit </button>
 
 </form>
-</div>
 {% endblock %}
