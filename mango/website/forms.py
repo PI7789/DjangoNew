@@ -24,3 +24,10 @@ class BookingForm(forms.ModelForm):
 
         widgets = {'booking_startdate': forms.DateInput(attrs={'type': 'date'}),
                   'booking_enddate': forms.DateInput(attrs={'type': 'date'}) }
+        
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = HotelUser
+
+        fields = ['username', 'first_name','last_name','email', 'phonenum']

@@ -5,25 +5,28 @@
 <nav class="navbar navbar-expand-sm bg-primary">
     <ul class="navbar-nav">
     <div class="logo-div">
-      <a href="#">
+      <a href="{% url '' %}">
       <img src="{% static 'Imagery/Logo.webp' %}">
     </a>
   </div>
+  {% if user.is_authenticated %}
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <a href = "#">
-        <button class="btn btn-secondary mt-2 "> 123 </button>
+      <a href = "{% url 'logout' %}">
+        <button class="btn btn-secondary mt-2 "> Sign Out </button>
+      </a>
+  {% else %}
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href = "{% url 'register' %}">
+        <button class="btn btn-secondary mt-2 "> Register </button>
       </a>
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <a href = "#">
-        <button class="btn btn-secondary mt-2 "> 123 </button>
+      <a href = "{% url 'login' %}">
+        <button class="btn btn-secondary mt-2 "> Log In </button>
       </a>
+      {% endif %}
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <a href = "#">
-        <button class="btn btn-secondary mt-2 "> 123 </button>
-      </a>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <a href = "#">
-        <button class="btn btn-secondary mt-2 "> 123 </button>
+      <a href = "{% url 'booking' %}">
+        <button class="btn btn-secondary mt-2 "> Booking </button>
       </a>
     </ul>
   </nav>

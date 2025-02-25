@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
+<div class="input-form-css">
 <form method="POST">
 
     {% csrf_token %}
@@ -11,4 +11,5 @@
     <button type="submit"> submit </button>
 
 </form>
+</div>
 {% endblock %}
