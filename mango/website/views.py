@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .models import HotelUser
+from .models import HotelUser, Booking
 
 from .forms import RegisterForm, LoginForm, BookingForm, ProfileForm
 
@@ -69,8 +69,23 @@ def logout(request):
     return redirect('')
 
 def profile(request):
-    form = ProfileForm
+    tablestuff = Booking.objects.filter(booking_user_id_id=request.user)
 
-    context = {'profileform': form}
+    profiletable = request.user
+
+    form = ProfileForm(instance=request.user)
+
+    if request.method == "POST":
+
+        form = ProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+
+            form.save()
+
+
+    context = {'profileform': form,
+               'profiledb': profiletable,
+               'record': tablestuff}
 
     return render(request, 'pages/profile.html', context = context)

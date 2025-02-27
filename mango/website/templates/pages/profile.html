@@ -2,4 +2,53 @@
 
 {% load crispy_forms_tags %}
 
-{%  %}
+{% block content %}
+
+{% comment %} this is the bookings table {% endcomment %}
+
+<table class="table"> 
+
+    <thead class="table-primary">
+        <th scope="col"> Arrival Date: </th>
+        <th scope="col"> Departure Date: </th>
+        <th scope="col"> People: </th>
+        <th scope="col"> Price: </th>
+        <th scope="col"> VIP: </th>   
+        {% comment %} <th scope="col"> Payment: </th>              {% endcomment %}
+    </thead>
+
+    <tbody>
+
+        {% if records %}
+        {% for record in records %}
+        <tr>
+            <td> {{record.booking_startdate}} </td>
+            <td> {{record.booking_enddate}} </td>
+            <td> {{record.booking_people}} </td>
+            <td> {{record.booking_cost}} </td>
+            <td> {{record.booking_VIP_status}}</td>
+            
+            {% endfor %}
+        {% endif %}
+
+        </tr>
+
+    </tbody>    
+
+</table>    
+
+{% comment %} this is the profile update form {% endcomment %}
+
+<form method = "POST" autocomplete = "on">
+    {% csrf_token %}
+    {{profileform|crispy}}
+    <button type="submit"> submit </button>
+</form>    
+
+
+
+{% comment %} this is the profile data view {% endcomment %}
+
+<h1> {{profiledb.username}} </h1> 
+
+{% endblock %}
