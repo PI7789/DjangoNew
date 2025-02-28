@@ -86,6 +86,6 @@ def profile(request):
 
     context = {'profileform': form,
                'profiledb': profiletable,
-               'record': tablestuff}
+               'records': tablestuff}
 
     return render(request, 'pages/profile.html', context = context)

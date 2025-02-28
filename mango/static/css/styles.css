@@ -1,5 +1,5 @@
 body{
-    background-image: linear-gradient(360deg, #33b7e2, #905fc4, #dc307c) !important
+    background-image: linear-gradient(45deg, #33b7e2, #b717e4, #dc307c) !important
 }
 
 .navbar{
@@ -30,4 +30,8 @@ body{
 /* django displayed errors such as login or register validation error: */
 .errorlog{
     color: red;
+}
+
+.profileform1{
+    border:1px solid black;
 }
