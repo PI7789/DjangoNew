@@ -47,7 +47,7 @@ def booking(request):
     if request.method=="POST":
         newrequest = request.POST.copy()
         newrequest.update({'booking_user_id_id':request.user})
-
+        
 
         form = BookingForm(newrequest)
 

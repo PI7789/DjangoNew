@@ -20,7 +20,7 @@ class BookingForm(forms.ModelForm):
     class Meta: 
         model = Booking
 
-        fields = ['booking_startdate','booking_enddate','booking_people']
+        fields = ['booking_startdate','booking_enddate','booking_people',]
 
         widgets = {'booking_startdate': forms.DateInput(attrs={'type': 'date'}),
                   'booking_enddate': forms.DateInput(attrs={'type': 'date'}) }

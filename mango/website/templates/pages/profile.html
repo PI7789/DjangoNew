@@ -8,32 +8,43 @@
 
 {% comment %} this is the profile update form {% endcomment %}
 <div class="row">
-    <div class="col">
+    <div class="col profileform1">
 <form method = "POST" autocomplete = "on">
     {% csrf_token %}
     {{profileform|crispy}}
-    <button type="submit"> submit </button>
-</form>    
+    <a type="submit" class="btn btn-primary"> submit </a>
+    &nbsp; &nbsp; &nbsp;
+    <a class="btn btn-danger" href="{% url 'login' %}"> Delete Profile </a>
+</form>
+    
 
     </div> 
 
 {% comment %} this is the profile data view {% endcomment %}
 <div class="col profileform1">
 
-<h1>Username: <strong> {{profiledb.username}} </h1>
+<h1>Username: <br>
+    <strong> {{profiledb.username}} </h1>
 <hr>
-<h1>First Name: {{profiledb.first_name}} </h1>
+<h1>First Name: <br>
+    {{profiledb.first_name}} </h1>
 <hr>
-<h1>Last Name: {{profiledb.last_name}} </h1>
+<h1>Last Name: <br>
+    {{profiledb.last_name}} </h1>
 <hr>
-<h1>Email: {{profiledb.email}} </h1>
+<h1>Email: <br>
+    {{profiledb.email}} </h1>
 <hr>
-<h1>Phone Number: {{profiledb.phonenum}} </h1>
+<h1>Phone Number: <br>
+    {{profiledb.phonenum}} </h1>
 
 </div>
 </div>
 {% comment %} this is the bookings table {% endcomment %}
+<hr>
 
+<h1> Your Bookings: </h1>
+<br>
 <div class="tablebottom">
 
 <table class="table table-hover"> 
