@@ -7,12 +7,14 @@
 
 
 {% comment %} this is the profile update form {% endcomment %}
+<br>
 <div class="row">
     <div class="col profileform1">
+        <h1> Profile </h1>
 <form method = "POST" autocomplete = "on">
     {% csrf_token %}
     {{profileform|crispy}}
-    <a type="submit" class="btn btn-primary"> submit </a>
+    <button type="submit" class="btn btn-primary"> submit </button>
     &nbsp; &nbsp; &nbsp;
     <a class="btn btn-danger" href="{% url 'login' %}"> Delete Profile </a>
 </form>

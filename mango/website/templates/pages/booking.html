@@ -8,6 +8,12 @@
 
     {% csrf_token %}
     {{BForm|crispy}}
+    <label for="VIP_Selector">Choose your lounge: </label>
+    <select name="VIP_Selector" id="VIP_Selector">
+        <option value="option1">Normal stay and lounge</option>
+        <option value="option2">VIP stay and lounge</option>
+    </select>
+    
     <button type="submit"> submit </button>
 
 </form>

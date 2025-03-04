@@ -47,13 +47,31 @@ def booking(request):
     if request.method=="POST":
         newrequest = request.POST.copy()
         newrequest.update({'booking_user_id_id':request.user})
-        
+        status = ""
+        if "option1" in request.POST:
+            status = request.POST['option1']
+            print(status)
 
+
+        elif "option2" in request.POST:
+            status = "VIP reservation"
+
+        print("NewRequest: ", newrequest)
         form = BookingForm(newrequest)
-
+        print(form)
         if form.is_valid():  
             obj = form.save(commit=False)
+            print(obj)
+            print("123" + status)
+            if status == "No VIP":
+                cost = int(obj.booking_people) * 25000
+            elif status == "VIP reservation":
+                cost = int(obj.booking_people) * 35000
+            
+            print(cost)
             obj.booking_user_id_id = request.user.id
+            obj.booking_VIP_status = status
+            obj.booking_cost = cost
             obj.save()
 
 
@@ -67,7 +85,7 @@ def booking(request):
 def logout(request):
     auth.logout(request)
     return redirect('')
-
+@login_required(login_url='login')
 def profile(request):
     tablestuff = Booking.objects.filter(booking_user_id_id=request.user)
 
