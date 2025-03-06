@@ -56,8 +56,8 @@
         <th scope="col"> Departure Date: </th>
         <th scope="col"> People: </th>
         <th scope="col"> Price: </th>
-        <th scope="col"> Stay Type: </th>   
-        {% comment %} <th scope="col"> Payment: </th>              {% endcomment %}
+        <th scope="col"> Stay Type: </th>
+        <th scope="col"> Information: </th>
     </thead>
 
     <tbody class="table-secondary">
@@ -70,6 +70,8 @@
             <td> {{record.booking_people}} </td>
             <td> {{record.booking_cost}} </td>
             <td> {{record.booking_VIP_status}}</td>
+            <td> <a class="btn btn-success" href="{% url 'info' record.booking_id %}?arrival={{ record.booking_startdate}}&VIPstatus={{record.booking_VIP_status}}">Click for Information</a> </td>
+
         </tr>
 
             {% endfor %}

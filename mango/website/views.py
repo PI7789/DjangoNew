@@ -1,14 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import HotelUser, Booking
 
-from .forms import RegisterForm, LoginForm, BookingForm, ProfileForm
+from .forms import RegisterForm, LoginForm, BookingForm, ProfileForm, PaymentForm
 
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.models import auth
 
 from django.contrib.auth.decorators import login_required
+
+import random
 
 # Create your views here.
 
@@ -62,8 +64,17 @@ def booking(request):
 
             result = depart - arrive
 
-            
+            flightnum = obj.booking_flight + 1
 
+            hour = random.randint(0,24)
+
+            minute = random.randint(0,12)
+
+            minute5 = minute * 5
+
+            minute5 = str(minute5).zfill(2)
+
+            flight_string = str(hour) + ":" + minute5
 
             if status == "option1":
                 cost = int(obj.booking_people) * 25000
@@ -77,10 +88,11 @@ def booking(request):
             obj.booking_user_id_id = request.user.id
             obj.booking_VIP_status = status
             obj.booking_cost = cost
+            obj.booking_flight = flight_string
             obj.save()
 
 
-            return redirect('')
+            return redirect('payment')
         else:
             print("error")
     context = {'BForm': form}
@@ -112,3 +124,38 @@ def profile(request):
                'records': tablestuff}
 
     return render(request, 'pages/profile.html', context = context)
+
+
+###############################################################################################
+
+def payment(request):
+    form = PaymentForm()
+
+    if request.method == "POST":
+
+        form = PaymentForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('')
+
+    context = {'paymentform':form}
+
+    return render(request, 'pages/payment.html', context=context)
+
+def info(request, booking_id):
+    record = get_object_or_404(Booking, booking_id=booking_id)
+
+    arrival = request.GET.get('arrival')
+
+    VIPstatus = request.GET.get('VIPstatus')
+
+    flight = record.booking_flight
+
+    print(flight)
+
+    print("arrival: " + arrival)
+
+    print("VIP status : "+ VIPstatus)
+
+    return render(request, 'pages/info.html')

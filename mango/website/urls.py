@@ -12,5 +12,9 @@ urlpatterns = [
 
     path('logout', views.logout, name="logout"),
 
-    path("profile", views.profile, name="profile")
+    path("profile", views.profile, name="profile"),
+
+    path("payment", views.payment, name="payment"),
+
+    path("info/<str:booking_id>/", views.info, name="info"),
 ]

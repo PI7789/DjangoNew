@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import HotelUser, Booking
+from .models import HotelUser, Booking, Payments
 
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
@@ -31,3 +31,13 @@ class ProfileForm(forms.ModelForm):
         model = HotelUser
 
         fields = ['username', 'first_name','last_name','email', 'phonenum']
+
+class PaymentForm(forms.ModelForm):
+
+    class Meta:
+        model = Payments
+
+        fields = ['card_num','card_name','card_cvc','card_exp']
+
+        widgets = {'card_exp': forms.DateInput(attrs={'type':'date'}),
+                   }
